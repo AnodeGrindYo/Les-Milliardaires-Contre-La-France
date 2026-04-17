@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Les Milliardaires contre la France</title>
+  <meta name="description" content="Comment des fortunes privées s’enrichissent aux dépens du pays, puis recyclent une partie de cette puissance pour pousser un agenda réactionnaire qui protège encore davantage leurs intérêts." />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-elev: #10141c;
+      --bg-soft: #141a24;
+      --text: #edf2f7;
+      --muted: #b4bfd1;
+      --line: rgba(255,255,255,.1);
+      --accent: #ff4d4d;
+      --accent-2: #ffb36a;
+      --accent-soft: rgba(255,77,77,.12);
+      --good: #8ad4a8;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1200px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+    body {
+      margin: 0;
+      max-width: 100%;
+      overflow-x: clip;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,77,77,.15), transparent 28%),
+        radial-gradient(circle at 100% 10%, rgba(255,179,106,.12), transparent 30%),
+        linear-gradient(180deg, #090b0f, #0b0d12 18%, #0c1017 100%);
+      line-height: 1.68;
+    }
+    a {
+      color: #ffd2b3;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    a:hover { text-decoration: underline; }
+    [id] { scroll-margin-top: 5rem; }
+    .site-shell {
+      display: grid;
+      grid-template-columns: minmax(250px, 280px) minmax(0, 1fr);
+      gap: clamp(1rem, 1.8vw, 1.6rem);
+      width: min(1540px, 100%);
+      margin: 0 auto;
+      padding: clamp(.75rem, 1.25vw, 1.25rem);
+      align-items: start;
+    }
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      width: 100%;
+      min-width: 0;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      align-self: start;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      background: rgba(12,16,23,.72);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overscroll-behavior: contain;
+    }
+    .sidebar h2 {
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin: 0 0 .7rem;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem;
+      display: grid;
+      gap: .35rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: .5rem .65rem;
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+      font-size: .95rem;
+    }
+    .sidebar a:hover { background: rgba(255,255,255,.06); transform: translateX(2px); }
+    .sidebar .tiny {
+      font-size: .9rem;
+      color: var(--muted);
+      margin: .75rem 0 0;
+    }
+    .sidebar .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .45rem .75rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size: .85rem;
+    }
+    .main {
+      min-width: 0;
+      width: 100%;
+      display: grid;
+      gap: 1.2rem;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        linear-gradient(135deg, rgba(255,77,77,.18), rgba(255,179,106,.08));
+      box-shadow: var(--shadow);
+      padding: clamp(1.35rem, 2.4vw, 2.2rem);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -25% auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(255,77,77,.22), transparent 60%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: #ffd9c3;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      max-width: 12ch;
+    }
+    .hero .standfirst {
+      max-width: 70ch;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin: 0 0 1.1rem;
+    }
+    .hero .sub {
+      max-width: 70ch;
+      color: var(--muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+    .cta-row {
+      margin-top: 1.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .85rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .button.primary {
+      background: linear-gradient(135deg, rgba(255,77,77,.95), rgba(255,130,90,.92));
+      color: white;
+      border-color: transparent;
+    }
+    .summary-grid, .stats-grid, .mechanism-grid, .explainer-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .summary-grid, .explainer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .stats-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .mechanism-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .panel h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.35rem;
+    }
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+.panel p,
+    .explainer-card p,
+    .mechanism-step p,
+    .stat-card p,
+    .quote-box p {
+      overflow-wrap: anywhere;
+    }
+    .explainer-card, .stat-card, .mechanism-step {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      border-radius: 22px;
+      padding: 1.15rem;
+    }
+    .explainer-card h3, .mechanism-step h3 {
+      margin: 0 0 .55rem;
+      font-size: 1.06rem;
+    }
+    .explainer-card p, .mechanism-step p, .stat-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    .stat-value {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .6rem;
+      color: #fff4ec;
+    }
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #ffd0d0;
+      font-weight: 700;
+      margin-bottom: .8rem;
+    }
+    .doc-wrap {
+      display: grid;
+      gap: 1rem;
+    }
+    .doc-section {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 26px;
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow);
+    }
+    .level-3 {
+      background: rgba(255,255,255,.02);
+      border-radius: 20px;
+      padding: 1.15rem;
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .85rem;
+    }
+    .section-head h2, .section-head h3 {
+      margin: 0;
+      line-height: 1.2;
+    }
+    .section-head h2 { font-size: clamp(1.45rem, 2vw, 1.8rem); }
+    .section-head h3 { font-size: 1.18rem; }
+    .anchor-link {
+      color: rgba(255,255,255,.35);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: .9rem;
+      flex: 0 0 auto;
+    }
+    .doc-section p {
+      margin: .85rem 0;
+      font-size: 1rem;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+    .doc-section ul, .doc-section ol {
+      margin: .8rem 0 .8rem 1.15rem;
+      padding-left: .3rem;
+    }
+    .doc-section li {
+      margin: .45rem 0;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+    .doc-section strong {
+      color: #fff1e9;
+    }
+    .doc-section code {
+      font-family: var(--mono);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: .45rem;
+      padding: .08rem .35rem;
+      font-size: .92em;
+    }
+    .rule {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      margin: 1.1rem 0;
+    }
+    .sources {
+      margin: 1rem 0;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      overflow: hidden;
+    }
+    .sources summary {
+      list-style: none;
+      cursor: pointer;
+      padding: .9rem 1rem;
+      font-weight: 700;
+      color: #ffe2d3;
+      user-select: none;
+    }
+    .sources summary::-webkit-details-marker { display: none; }
+    .sources[open] summary {
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .sources ol {
+      margin: 0;
+      padding: .95rem 1rem 1rem 2.2rem;
+    }
+    .sources li {
+      word-break: break-word;
+    }
+    .quote-box {
+      border-left: 4px solid rgba(255,77,77,.65);
+      background: rgba(255,77,77,.08);
+      border-radius: 0 18px 18px 0;
+      padding: 1rem 1rem 1rem 1.1rem;
+      color: #ffe8e2;
+    }
+    .quote-box p { margin: 0; }
+    .source-index {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 26px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+    .source-index ol {
+      margin: 1rem 0 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: .75rem;
+    }
+    .source-index li {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: .85rem .95rem;
+      background: rgba(255,255,255,.03);
+      display: grid;
+      gap: .35rem;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .src-index {
+      display: inline-block;
+      min-width: 2.6rem;
+      color: #ffd1c1;
+      font-family: var(--mono);
+      font-size: .92rem;
+    }
+    .src-host {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-top: .9rem;
+    }
+    .mobile-nav {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: .75rem 1rem;
+      background: rgba(10,12,18,.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-nav select {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: .85rem .9rem;
+      font: inherit;
+    }
+    @media (max-width: 1200px) {
+      .site-shell {
+        grid-template-columns: 1fr;
+        width: min(980px, 100%);
+      }
+      .sidebar {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+    }
+    @media (max-width: 900px) {
+      .summary-grid, .stats-grid, .mechanism-grid, .explainer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero .standfirst,
+      .hero .sub {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 640px) {
+      .mobile-nav {
+        padding: .6rem .75rem;
+      }
+      .mobile-nav select {
+        font-size: 16px;
+        padding: .8rem .85rem;
+      }
+      .hero {
+        padding: 1.15rem;
+        border-radius: 24px;
+      }
+      h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        max-width: 100%;
+      }
+      .panel,
+      .doc-section,
+      .source-index {
+        padding: 1rem;
+        border-radius: 20px;
+      }
+      .sources summary {
+        padding: .8rem .9rem;
+      }
+      .sources ol {
+        padding: .85rem .85rem .95rem 1.7rem;
+      }
+      .summary-grid, .stats-grid, .mechanism-grid, .explainer-grid {
+        grid-template-columns: 1fr;
+      }
+      .site-shell {
+        width: 100%;
+        padding: .75rem;
+      }
+    }
+    @media print {
+      body { background: white; color: black; }
+      .sidebar, .mobile-nav, .cta-row { display: none !important; }
+      .site-shell { display: block; max-width: none; padding: 0; }
+      .hero, .panel, .doc-section, .source-index {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: white;
+      }
+      a { color: black; text-decoration: underline; }
+      .sources { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-nav">
+    <label for="jump" class="sr-only" style="position:absolute;left:-9999px;">Aller à une section</label>
+    <select id="jump">
+      <option value="">Aller à une section…</option>
+      <option value="these">Thèse</option><option value="1-ce-quil-ne-faut-surtout-pas-diluer">1. Ce qu’il ne faut surtout pas diluer</option><option value="2-vincent-bollore-une-fortune-nourrie-par-la-rente-la-predation-et-la-faveur-publique">2. Vincent Bolloré : une fortune nourrie par la rente, la prédation et la faveur publique</option><option value="3-bollore-ne-se-contente-pas-de-senrichir-il-recycle-sa-fortune-dans-une-machine-de-radicalisation">3. Bolloré ne se contente pas de s’enrichir : il recycle sa fortune dans une machine de radicalisation</option><option value="4-pierre-edouard-sterin-lexile-fiscal-qui-veut-reorganiser-la-france-a-droite-toute">4. Pierre-Édouard Stérin : l’exilé fiscal qui veut réorganiser la France à droite toute</option><option value="5-pourquoi-ces-milliardaires-veulent-lextreme-droite-au-pouvoir">5. Pourquoi ces milliardaires veulent l’extrême droite au pouvoir</option><option value="6-ce-quils-coutent-concretement-a-la-france-et-aux-francais">6. Ce qu’ils coûtent concrètement à la France et aux Français</option><option value="7-formulation-synthetique-sans-euphemisme">7. Formulation synthétique, sans euphémisme</option><option value="8-conclusion">8. Conclusion</option>
+      <option value="bibliographie-complete">Bibliographie complète</option>
+    </select>
+  </div>
+
+  <div class="site-shell">
+    <aside class="sidebar">
+      <h2>Navigation</h2>
+      <div class="pill-row">
+        <span class="pill">39 sources</span>
+        <span class="pill">2 cas centraux</span>
+        <span class="pill">Version web statique</span>
+      </div>
+      <ul><li><a href="#these">Thèse</a></li><li><a href="#1-ce-quil-ne-faut-surtout-pas-diluer">1. Ce qu’il ne faut surtout pas diluer</a></li><li><a href="#2-vincent-bollore-une-fortune-nourrie-par-la-rente-la-predation-et-la-faveur-publique">2. Vincent Bolloré : une fortune nourrie par la rente, la prédation et la faveur publique</a></li><li><a href="#3-bollore-ne-se-contente-pas-de-senrichir-il-recycle-sa-fortune-dans-une-machine-de-radicalisation">3. Bolloré ne se contente pas de s’enrichir : il recycle sa fortune dans une machine de radicalisation</a></li><li><a href="#4-pierre-edouard-sterin-lexile-fiscal-qui-veut-reorganiser-la-france-a-droite-toute">4. Pierre-Édouard Stérin : l’exilé fiscal qui veut réorganiser la France à droite toute</a></li><li><a href="#5-pourquoi-ces-milliardaires-veulent-lextreme-droite-au-pouvoir">5. Pourquoi ces milliardaires veulent l’extrême droite au pouvoir</a></li><li><a href="#6-ce-quils-coutent-concretement-a-la-france-et-aux-francais">6. Ce qu’ils coûtent concrètement à la France et aux Français</a></li><li><a href="#7-formulation-synthetique-sans-euphemisme">7. Formulation synthétique, sans euphémisme</a></li><li><a href="#8-conclusion">8. Conclusion</a></li><li><a href="#bibliographie-complete">Bibliographie complète</a></li></ul>
+      <p class="tiny">Le fil directeur tient en une phrase : des fortunes privées s’enrichissent grâce à des mécanismes favorables au capital, puis utilisent une partie de cet argent pour pousser un climat politique qui protège encore mieux ces mécanismes.</p>
+    </aside>
+
+    <main class="main">
+      <header class="hero" id="top">
+        <div class="eyebrow">Dossier web • lecture publique • sources intégrales</div>
+        <h1>Les Milliardaires contre la France</h1>
+        <p class="standfirst">Comment des fortunes privées s’enrichissent aux dépens du pays, puis recyclent une partie de cette puissance pour pousser un agenda réactionnaire qui protège encore davantage leurs intérêts.</p>
+        <p class="sub">Question simple : quand on vote par colère contre un système jugé injuste, qui profite réellement du déplacement de cette colère vers les boucs émissaires plutôt que vers les rentes, les cadeaux fiscaux, la concentration médiatique et la captation de richesse ?</p>
+        <div class="cta-row">
+          <a class="button primary" href="#these">Commencer la lecture</a>
+          <a class="button" href="#bibliographie-complete">Voir toutes les sources</a>
+        </div>
+      </header>
+
+      <section class="panel">
+        <h2>En trente secondes</h2>
+        <p>Le mécanisme décrit par le dossier est simple : certaines très grandes fortunes accumulent de l’argent grâce à des positions dominantes, des régimes fiscaux favorables, des concessions rentables ou des traitements très indulgents. Ensuite, une partie de cet argent est transformée en pouvoir médiatique, idéologique et électoral. L’extrême droite leur est utile parce qu’elle détourne la colère populaire des rapports de classe vers des ennemis de remplacement, tout en promettant moins d’impôt sur le capital et moins de contre-pouvoirs.</p>
+      </section>
+
+      <section class="explainer-grid">
+        <article class="explainer-card"><h3>Si tu votes RN par colère</h3><p>La question utile est : qui gagne vraiment quand la colère populaire est redirigée loin des dividendes, des rentes, des cadeaux fiscaux et de la concentration du pouvoir économique ?</p></article><article class="explainer-card"><h3>Ce que montre Bolloré</h3><p>Une fortune nourrie par des mécanismes de rente et de domination, puis recyclée dans un empire médiatique qui radicalise le débat public.</p></article><article class="explainer-card"><h3>Ce que montre Stérin</h3><p>Un exilé fiscal milliardaire qui veut peser sur la France tout en vivant fiscalement ailleurs, et qui investit massivement dans la guerre culturelle et électorale.</p></article>
+      </section>
+
+      <section class="panel">
+        <h2>Les chiffres qui reviennent sans cesse</h2>
+        <p>Ces montants ne résument pas tout, mais ils donnent tout de suite l’échelle du problème.</p>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card"><div class="stat-value">198 M€</div><p>au moins sur le seul exemple Donges-Metz : 167 M€ de dividendes extraits, puis 31 M€ payés par l’État pour racheter l’actif</p></article><article class="stat-card"><div class="stat-value">320 M€</div><p>de pénalités fiscales abandonnées dans le dossier Vivendi, selon les informations rendues publiques</p></article><article class="stat-card"><div class="stat-value">5,7 Md€</div><p>tirés de la vente de Bolloré Africa Logistics, au cœur d’une demande de restitution portée par des ONG africaines</p></article><article class="stat-card"><div class="stat-value">150 M€</div><p>prévus sur dix ans par le projet Périclès pour peser idéologiquement et électoralement</p></article><article class="stat-card"><div class="stat-value">4 Md€+</div><p>coût budgétaire vraisemblable du remplacement de l’ISF par l’IFI en 2022, selon France Stratégie</p></article><article class="stat-card"><div class="stat-value">1,8 M€</div><p>montant évoqué dans l’enquête révélée par Le Monde sur de possibles prêts litigieux au profit de candidats RN</p></article>
+      </section>
+
+      <section class="panel">
+        <h2>Le mécanisme politique en quatre mouvements</h2>
+        <p>Ce qu’il faut garder en tête pendant toute la lecture.</p>
+      </section>
+
+      <section class="mechanism-grid">
+        <article class="mechanism-step"><span class="step-num">1</span><h3>Accumuler</h3><p>Rentes, concessions, positions dominantes, faveurs publiques, montages financiers, allègements fiscaux.</p></article><article class="mechanism-step"><span class="step-num">2</span><h3>Concentrer</h3><p>Transformer l’argent en pouvoir durable : médias, réseaux, influence, fondations, cabinets, écoles de cadres.</p></article><article class="mechanism-step"><span class="step-num">3</span><h3>Détourner</h3><p>Remplacer le conflit social par des paniques identitaires : immigrés, musulmans, pauvres, syndicats, minorités.</p></article><article class="mechanism-step"><span class="step-num">4</span><h3>Verrouiller</h3><p>Installer un climat politique favorable aux grandes fortunes : moins d’impôt, moins de contre-pouvoirs, plus de concentration.</p></article>
+      </section>
+
+      <section class="panel">
+        <h2>Ce que le dossier soutient exactement</h2>
+        <div class="quote-box">
+          <p>Le point n’est pas simplement que certains milliardaires sont conservateurs. Le point est qu’ils accumulent déjà des fortunes dans un ordre économique qui leur profite, puis travaillent à faire monter un ordre politique encore plus dur, plus autoritaire, plus inégalitaire et plus favorable au capital concentré.</p>
+        </div>
+      </section>
+
+      <div class="doc-wrap">
+        <section id="these" class="doc-section level-2"><div class="section-head"><h2>Thèse</h2><a class="anchor-link" href="#these">#</a></div><p>Le point central n’est pas seulement que certains milliardaires français aiment les idées réactionnaires.</p>
+<p>Le vrai problème est plus grave : ils ont accumulé des fortunes grâce à des mécanismes de rente, de prédation, d’opacité ou de faveur publique, puis ils utilisent une partie de cette puissance pour pousser un bloc politique qui leur promet trois choses en même temps :</p>
+<ol><li>moins d’impôts sur le capital ;</li><li>moins de contrôle démocratique et médiatique sur leur pouvoir ;</li><li>plus de guerre culturelle pour détourner la colère populaire loin des responsables économiques réels.</li></ol>
+<p>Autrement dit : ils s’enrichissent déjà aux dépens de la collectivité, puis financent un climat politique qui leur permettrait de s’enrichir encore plus facilement.</p>
+<p>Le mot juridiquement exact n’est pas toujours « vol » pour chaque opération prise isolément. Mais, socialement et politiquement, on parle bien d’une <strong>captation de richesse collective</strong> et d’une <strong>capture de la démocratie</strong>.</p>
+<hr class="rule"/></section>
+<section id="1-ce-quil-ne-faut-surtout-pas-diluer" class="doc-section level-2"><div class="section-head"><h2>1. Ce qu’il ne faut surtout pas diluer</h2><a class="anchor-link" href="#1-ce-quil-ne-faut-surtout-pas-diluer">#</a></div><p>Il ne faut pas noyer le sujet dans une galerie trop large de grandes fortunes vaguement conservatrices. Les deux cas les plus massifs, les plus documentés, et les plus directement utiles pour une démonstration solide sont :</p>
+<ul><li><strong>Vincent Bolloré</strong> : prédation économique, empire médiatique, rôle majeur dans la banalisation et la propulsion de l’extrême droite.</li><li><strong>Pierre-Édouard Stérin</strong> : exil fiscal, financement assumé d’une machine idéologique et électorale réactionnaire, soutien documenté à des réseaux de guerre culturelle et proximité avec l’extrême droite.</li></ul>
+<p>D’autres grandes fortunes et d’autres relais peuvent être évoqués, mais les cas Bolloré et Stérin constituent le noyau le plus massif, le plus documenté et le plus probant de cette démonstration.</p>
+<hr class="rule"/></section>
+<section id="2-vincent-bollore-une-fortune-nourrie-par-la-rente-la-predation-et-la-faveur-publique" class="doc-section level-2"><div class="section-head"><h2>2. Vincent Bolloré : une fortune nourrie par la rente, la prédation et la faveur publique</h2><a class="anchor-link" href="#2-vincent-bollore-une-fortune-nourrie-par-la-rente-la-predation-et-la-faveur-publique">#</a></div></section>
+<article id="2-1-sa-fortune-na-rien-dun-conte-meritocratique" class="doc-section level-3"><div class="section-head"><h3>2.1. Sa fortune n’a rien d’un conte méritocratique</h3><a class="anchor-link" href="#2-1-sa-fortune-na-rien-dun-conte-meritocratique">#</a></div><p>Le cœur de la fortune de Vincent Bolloré n’est pas celui d’un patron génial qui aurait simplement « créé de la richesse » à la loyale. Les enquêtes de l’Observatoire des multinationales et d’Attac décrivent au contraire un système fondé sur les <strong>coups boursiers</strong>, la <strong>captation de rentes</strong>, des <strong>montages financiers</strong>, et un ancrage durable dans des rapports de domination économique en Afrique.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore</a></li><li><a href="https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore</a></li></ol></details>
+<p>Le terme important ici est <strong>rente</strong>. Une rente, ce n’est pas la récompense d’une activité productive admirable. C’est un flux de richesse capté grâce à une position dominante, à une concession, à un monopole de fait, à une proximité avec le pouvoir ou à un rapport de force structurel.</p></article>
+<article id="2-2-lafrique-a-ete-un-immense-reservoir-de-richesse-pour-son-groupe" class="doc-section level-3"><div class="section-head"><h3>2.2. L’Afrique a été un immense réservoir de richesse pour son groupe</h3><a class="anchor-link" href="#2-2-lafrique-a-ete-un-immense-reservoir-de-richesse-pour-son-groupe">#</a></div><p>Mediapart a décrit l’Afrique comme « le cœur du réacteur » du groupe Bolloré. Pendant des années, ports, logistique et infrastructures stratégiques ont servi de pompe à profits. En 2025, une coalition d’ONG africaines a demandé en France la restitution d’une partie des profits tirés de ces activités, en visant notamment le produit de la vente de Bolloré Africa Logistics à MSC pour <strong>5,7 milliards d’euros</strong>.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.mediapart.fr/journal/economie/170222/l-afrique-coeur-du-reacteur-du-groupe-bollore" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/economie/170222/l-afrique-coeur-du-reacteur-du-groupe-bollore</a></li><li><a href="https://www.lemonde.fr/en/france/article/2025/03/19/ngos-file-suit-accusing-billionaire-vincent-bollore-of-being-at-heart-of-african-system-of-corruption_6739309_7.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/en/france/article/2025/03/19/ngos-file-suit-accusing-billionaire-vincent-bollore-of-being-at-heart-of-african-system-of-corruption_6739309_7.html</a></li><li><a href="https://www.reuters.com/business/anti-graft-groups-target-bollore-group-over-old-africa-assets-demand-restitution-2025-03-19/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/business/anti-graft-groups-target-bollore-group-over-old-africa-assets-demand-restitution-2025-03-19/</a></li><li><a href="https://afrique.latribune.fr/economie/2025-03-19/les-enjeux-economiques-derriere-la-plainte-de-restitution-afrique-contre-bollore-1021007.html" target="_blank" rel="noopener noreferrer">https://afrique.latribune.fr/economie/2025-03-19/les-enjeux-economiques-derriere-la-plainte-de-restitution-afrique-contre-bollore-1021007.html</a></li></ol></details>
+<p>Là encore, il faut appeler les choses par leur nom. Quand des concessions stratégiques sont obtenues dans des conditions que des ONG anti-corruption et des magistrats considèrent suffisamment troubles pour parler de corruption, de favoritisme, de trafic d’influence, puis transformées en milliards lors d’une cession, on n’est pas dans le capitalisme propre. On est dans une <strong>accumulation prédatrice</strong> adossée à des rapports néocoloniaux.</p></article>
+<article id="2-3-ce-systeme-a-deja-ete-rattrape-par-la-justice" class="doc-section level-3"><div class="section-head"><h3>2.3. Ce système a déjà été rattrapé par la justice</h3><a class="anchor-link" href="#2-3-ce-systeme-a-deja-ete-rattrape-par-la-justice">#</a></div><p>En 2021, la justice a validé une convention judiciaire d’intérêt public avec le groupe Bolloré et Financière de l’Odet, avec une amende de <strong>12 millions d’euros</strong> dans le dossier togolais. Dans cette affaire, la magistrate avait en parallèle jugé « nécessaire » qu’un procès se tienne pour Vincent Bolloré personnellement. En 2024, le Parquet national financier a de nouveau requis un procès dans le dossier des ports de Lomé et Conakry.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.leprogres.fr/faits-divers-justice/2021/02/26/corruption-au-togo-la-justice-estime-necessaire-un-proces-de-bollore" target="_blank" rel="noopener noreferrer">https://www.leprogres.fr/faits-divers-justice/2021/02/26/corruption-au-togo-la-justice-estime-necessaire-un-proces-de-bollore</a></li><li><a href="https://outlook.skan1.fr/2021/05/17/cjip-affaire-bollore-corruption-port-lome-togo-afa-amende-compliance/" target="_blank" rel="noopener noreferrer">https://outlook.skan1.fr/2021/05/17/cjip-affaire-bollore-corruption-port-lome-togo-afa-amende-compliance/</a></li><li><a href="https://www.lagazettefrance.fr/article/le-parquet-financier-demande-un-proces-pour-vincent-bollore-pour-corruption-au-togo" target="_blank" rel="noopener noreferrer">https://www.lagazettefrance.fr/article/le-parquet-financier-demande-un-proces-pour-vincent-bollore-pour-corruption-au-togo</a></li></ol></details>
+<p>Ce n’est pas un détail. Cela veut dire qu’on ne parle pas ici de simples critiques militantes ou d’un désaccord idéologique. On parle d’un système d’affaires assez chargé pour avoir produit des suites pénales et des transactions judiciaires lourdes.</p></article>
+<article id="2-4-le-cas-donges-metz-un-exemple-parfaitement-obscene-de-ce-que-ca-coute-a-la-collectivite" class="doc-section level-3"><div class="section-head"><h3>2.4. Le cas Donges-Metz : un exemple parfaitement obscène de ce que ça coûte à la collectivité</h3><a class="anchor-link" href="#2-4-le-cas-donges-metz-un-exemple-parfaitement-obscene-de-ce-que-ca-coute-a-la-collectivite">#</a></div><p>C’est un des exemples les plus parlants parce qu’il est simple à comprendre.</p>
+<p>L’État a racheté en 2022 à Bolloré, pour un peu plus de <strong>31 millions d’euros</strong>, la société opérant l’oléoduc Donges-Melun-Metz. Or Mediapart a montré que cette concession avait déjà permis au groupe de se verser <strong>plus de 167 millions d’euros de dividendes</strong> sur vingt-sept ans, et que l’État aurait dû récupérer gratuitement l’actif au terme de la concession.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.connaissancedesenergies.org/afp/letat-rachete-bollore-pour-31-millions-deuros-la-societe-qui-opere-loleoduc-donges-melun-metz-220119" target="_blank" rel="noopener noreferrer">https://www.connaissancedesenergies.org/afp/letat-rachete-bollore-pour-31-millions-deuros-la-societe-qui-opere-loleoduc-donges-melun-metz-220119</a></li><li><a href="https://www.mediapart.fr/journal/economie-et-social/270122/l-etat-fait-un-cadeau-insense-bollore" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/economie-et-social/270122/l-etat-fait-un-cadeau-insense-bollore</a></li></ol></details>
+<p>Dit autrement :</p>
+<ul><li>le groupe a déjà tiré au moins <strong>167 millions</strong> de l’exploitation ;</li><li>puis l’État a encore remis <strong>31 millions</strong> pour récupérer ce qu’il n’aurait jamais dû avoir à repayer.</li></ul>
+<p>Sur ce seul dossier, on a donc un exemple documenté où la logique de rente privée a coûté à la collectivité <strong>au moins 198 millions d’euros</strong> si l’on additionne les dividendes extraits et le prix de rachat final.</p>
+<p>C’est exactement le genre de mécanisme qui donne envie de parler de pillage légal plutôt que de simple gestion d’entreprise.</p></article>
+<article id="2-5-le-dossier-fiscal-vivendi-encore-un-exemple-de-traitement-extraordinairement-favorable" class="doc-section level-3"><div class="section-head"><h3>2.5. Le dossier fiscal Vivendi : encore un exemple de traitement extraordinairement favorable</h3><a class="anchor-link" href="#2-5-le-dossier-fiscal-vivendi-encore-un-exemple-de-traitement-extraordinairement-favorable">#</a></div><p>En 2025, une information AFP reprise par plusieurs médias a révélé que Vivendi avait subi un redressement fiscal de <strong>2,4 milliards d’euros</strong>, mais que l’administration avait renoncé aux pénalités, soit <strong>320 millions d’euros</strong>.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.boursorama.com/bourse/actualites/redressement-fiscal-de-vivendi-eric-coquerel-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore-1381c695055c14bbb5215ff9b768cc61" target="_blank" rel="noopener noreferrer">https://www.boursorama.com/bourse/actualites/redressement-fiscal-de-vivendi-eric-coquerel-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore-1381c695055c14bbb5215ff9b768cc61</a></li><li><a href="https://medias24.com/agence-presse/eric-coquerel-lfi-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore/" target="_blank" rel="noopener noreferrer">https://medias24.com/agence-presse/eric-coquerel-lfi-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore/</a></li></ol></details>
+<p>Il faut être rigoureux : il s’agit d’une <strong>controverse fiscale documentée</strong>, et non d’une condamnation pénale définitive pour fraude. Mais politiquement, l’image est déjà accablante. Quand des gouvernements expliquent qu’il faut rogner partout, qu’il n’y a plus d’argent pour l’hôpital, l’école, les collectivités, et que dans le même temps des groupes de cette taille échappent à <strong>320 millions d’euros</strong> de pénalités, le mot « indulgence de classe » est difficile à éviter.</p></article>
+<article id="2-6-les-plantations-liees-a-bollore-quand-le-langage-poli-devient-mensonger" class="doc-section level-3"><div class="section-head"><h3>2.6. Les plantations liées à Bolloré : quand le langage poli devient mensonger</h3><a class="anchor-link" href="#2-6-les-plantations-liees-a-bollore-quand-le-langage-poli-devient-mensonger">#</a></div><p>Sur les plantations liées à Socfin, il faut rester précis sans laver la réalité. Le plus grand fonds souverain du monde, celui de Norvège, a exclu Bolloré SE et Compagnie de l’Odet de son univers d’investissement après des années de dialogue infructueux, en raison de préoccupations liées à de <strong>graves violations des droits humains</strong>, aux <strong>violences sexuelles</strong>, au <strong>harcèlement</strong> et aux <strong>violations des droits du travail</strong> dans les plantations de Socfin.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.nbim.no/en/news-and-insights/the-press/press-releases/2025/decision-on-exclusion/" target="_blank" rel="noopener noreferrer">https://www.nbim.no/en/news-and-insights/the-press/press-releases/2025/decision-on-exclusion/</a></li><li><a href="https://www.norges-bank.no/en/news-events/publications/Annual-Report/2025-annual-report/web-report-2025-annual-report/" target="_blank" rel="noopener noreferrer">https://www.norges-bank.no/en/news-events/publications/Annual-Report/2025-annual-report/web-report-2025-annual-report/</a></li><li><a href="https://www.oaklandinstitute.org/public-statement/norwegian-pension-fund-dumps-bollore-human-rights-violations-plantations" target="_blank" rel="noopener noreferrer">https://www.oaklandinstitute.org/public-statement/norwegian-pension-fund-dumps-bollore-human-rights-violations-plantations</a></li><li><a href="https://www.novethic.fr/economie-et-social/droits-humains/le-fonds-souverain-norvegien-exclut-le-groupe-bollore-pour-violations-de-droits-humains" target="_blank" rel="noopener noreferrer">https://www.novethic.fr/economie-et-social/droits-humains/le-fonds-souverain-norvegien-exclut-le-groupe-bollore-pour-violations-de-droits-humains</a></li></ol></details>
+<p>Le mot exact des sources n’est pas toujours « esclavage ». Mais quand il est question de dépossession foncière, de dépendance économique extrême, de violences sexuelles, de violations répétées du droit du travail et d’impunité durable, parler d’un <strong>système quasi servile</strong>, <strong>néocolonial</strong> et <strong>structurellement violent</strong> n’a rien d’exagéré. Le vrai euphémisme serait au contraire d’appeler ça un simple “contentieux ESG”.</p>
+<hr class="rule"/></article>
+<section id="3-bollore-ne-se-contente-pas-de-senrichir-il-recycle-sa-fortune-dans-une-machine-de-radicalisation" class="doc-section level-2"><div class="section-head"><h2>3. Bolloré ne se contente pas de s’enrichir : il recycle sa fortune dans une machine de radicalisation</h2><a class="anchor-link" href="#3-bollore-ne-se-contente-pas-de-senrichir-il-recycle-sa-fortune-dans-une-machine-de-radicalisation">#</a></div></section>
+<article id="3-1-son-empire-mediatique-est-une-arme-politique" class="doc-section level-3"><div class="section-head"><h3>3.1. Son empire médiatique est une arme politique</h3><a class="anchor-link" href="#3-1-son-empire-mediatique-est-une-arme-politique">#</a></div><p>Vincent Bolloré a mis la main, directement ou indirectement, sur une masse considérable d’actifs médiatiques et culturels : CNews, Europe 1, le JDD, Fayard, Prisma Media, Canal+, Hachette et d’autres. L’enjeu n’est pas seulement économique : c’est la capacité à <strong>fixer l’agenda</strong>, <strong>normaliser des obsessions identitaires</strong> et <strong>décaler le centre du débat public vers la droite extrême</strong>.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore</a></li><li><a href="https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore</a></li><li><a href="https://vert.eco/articles/quelles-entreprises-possede-vincent-bollore-le-milliardaire-au-service-de-lextreme-droite" target="_blank" rel="noopener noreferrer">https://vert.eco/articles/quelles-entreprises-possede-vincent-bollore-le-milliardaire-au-service-de-lextreme-droite</a></li><li><a href="https://www.mediapart.fr/journal/culture-et-idees/090426/debrancher-cnews-lutter-contre-le-racisme" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/culture-et-idees/090426/debrancher-cnews-lutter-contre-le-racisme</a></li></ol></details>
+<p>Quand un milliardaire utilise une fortune issue de rentes et de rapports de domination pour inonder l’espace public de paniques morales, de xénophobie respectable et de propagande identitaire, il ne “participe pas au débat”. Il <strong>empoisonne le débat</strong>.</p></article>
+<article id="3-2-son-role-dans-la-normalisation-politique-de-lextreme-droite-est-documente" class="doc-section level-3"><div class="section-head"><h3>3.2. Son rôle dans la normalisation politique de l’extrême droite est documenté</h3><a class="anchor-link" href="#3-2-son-role-dans-la-normalisation-politique-de-lextreme-droite-est-documente">#</a></div><p>Le Monde a documenté le rôle joué par Vincent Bolloré dans la séquence du ralliement d’Éric Ciotti au RN en 2024. Ce n’est plus une proximité vague ou une simple sympathie idéologique. C’est l’usage direct d’un réseau de pouvoir médiatique et relationnel pour pousser à l’union des droites au profit de l’extrême droite.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.lemonde.fr/politique/article/2024/06/13/comment-eric-ciotti-a-orchestre-avec-vincent-bollore-l-annonce-de-son-ralliement-au-rn_6239404_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2024/06/13/comment-eric-ciotti-a-orchestre-avec-vincent-bollore-l-annonce-de-son-ralliement-au-rn_6239404_823448.html</a></li><li><a href="https://www.lemonde.fr/en/economy/article/2024/06/21/french-business-leaders-are-tempted-by-the-far-right_6675357_19.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/en/economy/article/2024/06/21/french-business-leaders-are-tempted-by-the-far-right_6675357_19.html</a></li></ol></details>
+<hr class="rule"/></article>
+<section id="4-pierre-edouard-sterin-lexile-fiscal-qui-veut-reorganiser-la-france-a-droite-toute" class="doc-section level-2"><div class="section-head"><h2>4. Pierre-Édouard Stérin : l’exilé fiscal qui veut réorganiser la France à droite toute</h2><a class="anchor-link" href="#4-pierre-edouard-sterin-lexile-fiscal-qui-veut-reorganiser-la-france-a-droite-toute">#</a></div></section>
+<article id="4-1-le-point-de-depart-est-deja-obscene-il-veut-peser-sur-la-france-tout-en-vivant-fiscalement-ailleurs" class="doc-section level-3"><div class="section-head"><h3>4.1. Le point de départ est déjà obscène : il veut peser sur la France tout en vivant fiscalement ailleurs</h3><a class="anchor-link" href="#4-1-le-point-de-depart-est-deja-obscene-il-veut-peser-sur-la-france-tout-en-vivant-fiscalement-ailleurs">#</a></div><p>Pierre-Édouard Stérin est décrit par Le Monde, Mediapart, LCP et l’Observatoire des multinationales comme un <strong>exilé fiscal en Belgique</strong>.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html</a></li><li><a href="https://www.lemonde.fr/politique/article/2025/02/18/pierre-edouard-sterin-et-francois-durvye-les-hommes-d-affaires-qui-aimantent-la-droite-et-le-rn_6551770_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2025/02/18/pierre-edouard-sterin-et-francois-durvye-les-hommes-d-affaires-qui-aimantent-la-droite-et-le-rn_6551770_823448.html</a></li><li><a href="https://www.mediapart.fr/journal/france/140525/le-milliardaire-pierre-edouard-sterin-esquive-la-commission-d-enquete-sur-les-elections" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/france/140525/le-milliardaire-pierre-edouard-sterin-esquive-la-commission-d-enquete-sur-les-elections</a></li><li><a href="https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les" target="_blank" rel="noopener noreferrer">https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les</a></li><li><a href="https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin</a></li></ol></details>
+<p>Le raisonnement est d’une hypocrisie spectaculaire : ne pas contribuer fiscalement en France à hauteur de ce qu’on pourrait y devoir, tout en prétendant y piloter un redressement moral et politique. Ce n’est pas du patriotisme. C’est un <strong>nationalisme pour les autres, optimisation pour soi</strong>.</p></article>
+<article id="4-2-pericles-150-millions-deuros-pour-faire-gagner-son-camp" class="doc-section level-3"><div class="section-head"><h3>4.2. Périclès : 150 millions d’euros pour faire gagner son camp</h3><a class="anchor-link" href="#4-2-pericles-150-millions-deuros-pour-faire-gagner-son-camp">#</a></div><p>Le projet <strong>Périclès</strong> est l’un des éléments les plus importants à ne surtout pas minimiser. Les enquêtes de Le Monde, Mediapart, France Inter et l’Observatoire des multinationales convergent : il s’agit d’une machine pensée pour la <strong>victoire idéologique, électorale et politique</strong> de la droite et de l’extrême droite, avec <strong>150 millions d’euros sur dix ans</strong>.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html</a></li><li><a href="https://www.radiofrance.fr/franceinter/podcasts/secrets-d-info/secrets-d-info-du-samedi-22-fevrier-2025-3617308" target="_blank" rel="noopener noreferrer">https://www.radiofrance.fr/franceinter/podcasts/secrets-d-info/secrets-d-info-du-samedi-22-fevrier-2025-3617308</a></li><li><a href="https://www.mediapart.fr/journal/france/190724/le-plan-pericles-des-millions-pour-l-extreme-droite-et-une-victoire-du-rn" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/france/190724/le-plan-pericles-des-millions-pour-l-extreme-droite-et-une-victoire-du-rn</a></li><li><a href="https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin</a></li></ol></details>
+<p>Il faut appeler ça pour ce que c’est : <strong>de l’ingénierie politique privée à très grande échelle</strong>. Pas une opinion. Pas un simple militantisme. Une tentative d’acheter de l’hégémonie culturelle, des cadres, des candidats, des influenceurs, des technocrates et des relais électoraux.</p></article>
+<article id="4-3-il-finance-aussi-la-guerre-culturelle-reactionnaire" class="doc-section level-3"><div class="section-head"><h3>4.3. Il finance aussi la guerre culturelle réactionnaire</h3><a class="anchor-link" href="#4-3-il-finance-aussi-la-guerre-culturelle-reactionnaire">#</a></div><p>Le Fonds du bien commun et l’écosystème Stérin ne servent pas seulement à « aider des associations ». Ils servent à irriguer des structures et projets alignés avec un agenda conservateur, chrétien intégriste, antiféministe, anti-droits sexuels ou national-identitaire.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.streetpress.com/sujet/1741086667-milliardaire-extreme-droite-sterin-inonde-web-influenceurs-cathos-sponsor-finance-fonds-chretiens-conservateurs-tiktok-instagram" target="_blank" rel="noopener noreferrer">https://www.streetpress.com/sujet/1741086667-milliardaire-extreme-droite-sterin-inonde-web-influenceurs-cathos-sponsor-finance-fonds-chretiens-conservateurs-tiktok-instagram</a></li><li><a href="https://www.huffingtonpost.fr/politique/article/pierre-edouard-sterin-tout-ce-que-vous-devez-savoir-sur-ce-milliardaire-qui-sponsorise-l-extreme-droite_252493.html" target="_blank" rel="noopener noreferrer">https://www.huffingtonpost.fr/politique/article/pierre-edouard-sterin-tout-ce-que-vous-devez-savoir-sur-ce-milliardaire-qui-sponsorise-l-extreme-droite_252493.html</a></li><li><a href="https://multinationales.org/fr/enquetes/extreme-tech/derriere-la-nuit-du-bien-commun-l-ombre-embarrassante-de-sterin-et-toute-une" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/extreme-tech/derriere-la-nuit-du-bien-commun-l-ombre-embarrassante-de-sterin-et-toute-une</a></li><li><a href="https://multinationales.org/fr/enquetes/extreme-tech/pierre-edouard-sterin-finance-son-fonds-du-bien-commun-par-des-prets" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/extreme-tech/pierre-edouard-sterin-finance-son-fonds-du-bien-commun-par-des-prets</a></li></ol></details>
+<p>Là aussi, il faut sortir du vocabulaire décoratif. Quand un milliardaire finance méthodiquement des réseaux destinés à déplacer la fenêtre d’Overton, former des cadres, nourrir des médias ou vernir idéologiquement des causes réactionnaires, on parle d’une <strong>machine de guerre culturelle</strong>.</p></article>
+<article id="4-4-il-est-aussi-au-coeur-dune-enquete-sur-de-possibles-financements-illegaux-au-profit-du-rn" class="doc-section level-3"><div class="section-head"><h3>4.4. Il est aussi au cœur d’une enquête sur de possibles financements illégaux au profit du RN</h3><a class="anchor-link" href="#4-4-il-est-aussi-au-coeur-dune-enquete-sur-de-possibles-financements-illegaux-au-profit-du-rn">#</a></div><p>Le Monde a révélé en 2025 qu’une enquête portait sur un possible système de prêts destiné à soutenir des candidats RN, pour environ <strong>1,8 million d’euros</strong>, avec des soupçons de blanchiment et d’exercice illégal de la profession de banquier.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.lemonde.fr/les-decodeurs/article/2025/07/10/le-milliardaire-pierre-edouard-sterin-au-c-ur-d-une-enquete-sur-le-financement-illegal-de-candidats-du-rn_6620450_4355770.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/les-decodeurs/article/2025/07/10/le-milliardaire-pierre-edouard-sterin-au-c-ur-d-une-enquete-sur-le-financement-illegal-de-candidats-du-rn_6620450_4355770.html</a></li><li><a href="https://www.lemonde.fr/politique/article/2025/07/10/les-multiples-tentatives-de-pierre-edouard-sterin-pour-participer-a-la-victoire-electorale-de-son-camp_6620471_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2025/07/10/les-multiples-tentatives-de-pierre-edouard-sterin-pour-participer-a-la-victoire-electorale-de-son-camp_6620471_823448.html</a></li></ol></details>
+<p>Il faut respecter la présomption d’innocence sur l’issue pénale. Mais politiquement, l’ensemble est déjà accablant : exil fiscal, projet Périclès, financement de la guerre culturelle, et soupçons d’appui électoral occulte à l’extrême droite.</p></article>
+<article id="4-5-son-mepris-du-controle-democratique-est-lui-aussi-documente" class="doc-section level-3"><div class="section-head"><h3>4.5. Son mépris du contrôle démocratique est lui aussi documenté</h3><a class="anchor-link" href="#4-5-son-mepris-du-controle-democratique-est-lui-aussi-documente">#</a></div><p>Stérin a refusé à plusieurs reprises de se présenter physiquement devant une commission d’enquête parlementaire sur l’organisation des élections en France. LCP et l’Assemblée nationale ont documenté ces absences répétées.</p>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les" target="_blank" rel="noopener noreferrer">https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les</a></li><li><a href="https://lcp.fr/actualites/l-homme-d-affaires-pierre-edouard-sterin-seche-encore-la-convocation-d-une-commission-d" target="_blank" rel="noopener noreferrer">https://lcp.fr/actualites/l-homme-d-affaires-pierre-edouard-sterin-seche-encore-la-convocation-d-une-commission-d</a></li><li><a href="https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/audition-de-pierre-edouard-sterin-par-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france" target="_blank" rel="noopener noreferrer">https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/audition-de-pierre-edouard-sterin-par-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france</a></li><li><a href="https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/poursuite-des-travaux-de-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france" target="_blank" rel="noopener noreferrer">https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/poursuite-des-travaux-de-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france</a></li></ol></details>
+<p>C’est typiquement oligarchique : intervenir massivement dans la vie politique, mais esquiver la reddition de comptes devant la représentation nationale.</p>
+<hr class="rule"/></article>
+<section id="5-pourquoi-ces-milliardaires-veulent-lextreme-droite-au-pouvoir" class="doc-section level-2"><div class="section-head"><h2>5. Pourquoi ces milliardaires veulent l’extrême droite au pouvoir</h2><a class="anchor-link" href="#5-pourquoi-ces-milliardaires-veulent-lextreme-droite-au-pouvoir">#</a></div><p>Il faut cesser de raconter ça comme une affaire de simple goût personnel.</p></section>
+<article id="5-1-parce-que-lextreme-droite-protege-mieux-les-interets-du-capital-que-la-colere-sociale" class="doc-section level-3"><div class="section-head"><h3>5.1. Parce que l’extrême droite protège mieux les intérêts du capital que la colère sociale</h3><a class="anchor-link" href="#5-1-parce-que-lextreme-droite-protege-mieux-les-interets-du-capital-que-la-colere-sociale">#</a></div><p>La fonction politique fondamentale de l’extrême droite est de détourner la colère populaire des mécanismes d’exploitation vers des boucs émissaires : immigrés, musulmans, pauvres, féministes, syndicats, personnes LGBT, universitaires, artistes.</p>
+<p>Pendant qu’on se bat sur des paniques morales, on ne parle plus des dividendes, des cadeaux fiscaux, des rentes, des privatisations ou des services publics détruits.</p></article>
+<article id="5-2-parce-quun-pouvoir-plus-autoritaire-est-plus-confortable-pour-les-grandes-fortunes" class="doc-section level-3"><div class="section-head"><h3>5.2. Parce qu’un pouvoir plus autoritaire est plus confortable pour les grandes fortunes</h3><a class="anchor-link" href="#5-2-parce-quun-pouvoir-plus-autoritaire-est-plus-confortable-pour-les-grandes-fortunes">#</a></div><p>Moins de contre-pouvoirs, moins de presse indépendante, moins de syndicats forts, moins de régulation, plus de concentration : c’est un environnement objectivement favorable aux oligarques.</p></article>
+<article id="5-3-parce-quils-veulent-verrouiller-un-ordre-fiscal-qui-les-avantage-deja" class="doc-section level-3"><div class="section-head"><h3>5.3. Parce qu’ils veulent verrouiller un ordre fiscal qui les avantage déjà</h3><a class="anchor-link" href="#5-3-parce-quils-veulent-verrouiller-un-ordre-fiscal-qui-les-avantage-deja">#</a></div><p>Le rapport final de France Stratégie sur la fiscalité du capital rappelle plusieurs points essentiels :</p>
+<ul><li>en 2018, les recettes d’ISF/IFI sont passées de <strong>5,1 milliards</strong> à <strong>1,8 milliard</strong> ;</li><li>en 2022, le coût budgétaire du remplacement de l’ISF par l’IFI serait <strong>vraisemblablement de plus de 4 milliards d’euros</strong> ;</li><li>le comité indique aussi qu’aucun effet clair de l’ISF n’a pu être identifié sur l’activité des ETI ;</li><li>le plafonnement de l’ISF profitait déjà très largement aux plus fortunés, pour un coût budgétaire de l’ordre de <strong>2 milliards d’euros</strong>.</li></ul>
+<details class="sources"><summary>Sources de cette section</summary><ol><li><a href="https://www.strategie.gouv.fr/files/files/Publications/Rapport/fs-2023-rapport-isf-quatrieme_rapport_complet_17octobre_2.pdf" target="_blank" rel="noopener noreferrer">https://www.strategie.gouv.fr/files/files/Publications/Rapport/fs-2023-rapport-isf-quatrieme_rapport_complet_17octobre_2.pdf</a></li><li><a href="https://www.strategie.gouv.fr/files/files/Presse/CP%202023/2023-10-17_Le%20Comit%C3%A9%20d%27%C3%A9valuation%20des%20r%C3%A9formes%20de%20la%20fiscalit%C3%A9%20du%20capital%20publie%20son%20rapport%20final.pdf" target="_blank" rel="noopener noreferrer">https://www.strategie.gouv.fr/files/files/Presse/CP%202023/2023-10-17_Le%20Comit%C3%A9%20d%27%C3%A9valuation%20des%20r%C3%A9formes%20de%20la%20fiscalit%C3%A9%20du%20capital%20publie%20son%20rapport%20final.pdf</a></li></ol></details>
+<p>C’est ici qu’on voit l’intérêt structurel de ces milliardaires pour une droite de plus en plus radicalisée : protéger et approfondir un régime fiscal qui bénéficie massivement aux détenteurs de capital.</p>
+<hr class="rule"/></article>
+<section id="6-ce-quils-coutent-concretement-a-la-france-et-aux-francais" class="doc-section level-2"><div class="section-head"><h2>6. Ce qu’ils coûtent concrètement à la France et aux Français</h2><a class="anchor-link" href="#6-ce-quils-coutent-concretement-a-la-france-et-aux-francais">#</a></div></section>
+<article id="a-des-montants-directement-documentes" class="doc-section level-3"><div class="section-head"><h3>A. Des montants directement documentés</h3><a class="anchor-link" href="#a-des-montants-directement-documentes">#</a></div><ul><li><strong>Donges-Metz</strong> : plus de <strong>167 millions d’euros</strong> de dividendes extraits, puis <strong>31 millions d’euros</strong> payés par l’État pour le rachat.</li><li><strong>Vivendi</strong> : <strong>320 millions d’euros</strong> de pénalités fiscales abandonnées dans un dossier de redressement de <strong>2,4 milliards</strong>.</li><li><strong>Bolloré Africa Logistics</strong> : <strong>5,7 milliards d’euros</strong> de vente d’un actif dont des ONG demandent qu’une part des profits soit restituée aux populations lésées si l’origine corruptrice était établie.</li><li><strong>Périclès</strong> : <strong>150 millions d’euros</strong> destinés à peser politiquement pour faire gagner la droite et l’extrême droite.</li><li><strong>Financements RN liés à Stérin</strong> : enquête sur environ <strong>1,8 million d’euros</strong> de prêts litigieux.</li></ul></article>
+<article id="b-des-couts-moins-facilement-chiffrables-mais-tout-aussi-reels" class="doc-section level-3"><div class="section-head"><h3>B. Des coûts moins facilement chiffrables, mais tout aussi réels</h3><a class="anchor-link" href="#b-des-couts-moins-facilement-chiffrables-mais-tout-aussi-reels">#</a></div><ul><li>coût fiscal de l’exil de grandes fortunes qui prétendent décider de la France sans y contribuer à proportion ;</li><li>coût démocratique de la concentration médiatique et de la propagande identitaire ;</li><li>coût social d’un débat public saturé par la haine raciale et les paniques morales ;</li><li>coût humain des violations des droits dans les plantations et chaînes de valeur ;</li><li>coût politique d’une extrême droite dont le rôle réel est de sécuriser l’ordre social des ultra-riches.</li></ul></article>
+<article id="c-pourquoi-le-cout-ne-se-reduit-pas-a-des-euros" class="doc-section level-3"><div class="section-head"><h3>C. Pourquoi le “coût” ne se réduit pas à des euros</h3><a class="anchor-link" href="#c-pourquoi-le-cout-ne-se-reduit-pas-a-des-euros">#</a></div><p>Quand un milliardaire pousse l’extrême droite, il ne prend pas seulement de l’argent. Il contribue aussi à fabriquer :</p>
+<ul><li>un pays plus raciste ;</li><li>un pays plus autoritaire ;</li><li>un pays plus violent contre les pauvres et les minorités ;</li><li>un pays où la colère populaire est méthodiquement détournée des vrais centres de pouvoir.</li></ul>
+<p>Le préjudice est donc <strong>budgétaire</strong>, <strong>social</strong>, <strong>médiatique</strong>, <strong>démocratique</strong> et <strong>moral</strong>.</p>
+<hr class="rule"/></article>
+<section id="7-formulation-synthetique-sans-euphemisme" class="doc-section level-2"><div class="section-head"><h2>7. Formulation synthétique, sans euphémisme</h2><a class="anchor-link" href="#7-formulation-synthetique-sans-euphemisme">#</a></div></section>
+<article id="vincent-bollore" class="doc-section level-3"><div class="section-head"><h3>Vincent Bolloré</h3><a class="anchor-link" href="#vincent-bollore">#</a></div><p>Vincent Bolloré n’est pas seulement un patron conservateur. C’est un milliardaire dont la fortune a prospéré grâce à des rentes, des opérations agressives, des rapports de domination économique et des faveurs publiques, puis qui a recyclé cette puissance dans un empire médiatique au service de la radicalisation du débat public et de la normalisation de l’extrême droite. Il ne se contente pas de profiter du système : il travaille à rendre le système encore plus favorable à sa classe.</p></article>
+<article id="pierre-edouard-sterin" class="doc-section level-3"><div class="section-head"><h3>Pierre-Édouard Stérin</h3><a class="anchor-link" href="#pierre-edouard-sterin">#</a></div><p>Pierre-Édouard Stérin n’est pas seulement un entrepreneur engagé. C’est un exilé fiscal milliardaire qui investit des dizaines puis des centaines de millions pour pousser un agenda idéologique, culturel et électoral réactionnaire en France. Il veut peser sur le pays sans assumer à la même hauteur la solidarité fiscale qui permet au pays de tenir. Là encore, il ne s’agit pas d’une opinion privée : il s’agit d’une tentative de capture politique par l’argent.</p>
+<hr class="rule"/></article>
+<section id="8-conclusion" class="doc-section level-2"><div class="section-head"><h2>8. Conclusion</h2><a class="anchor-link" href="#8-conclusion">#</a></div><p>Le fond de l’affaire est simple.</p>
+<p>Ces milliardaires n’aiment pas l’extrême droite par hasard. Ils l’aiment parce qu’elle leur est utile.</p>
+<p>Elle détourne la colère. Elle protège les hiérarchies. Elle désigne des ennemis de remplacement. Elle affaiblit les contre-pouvoirs. Elle permet de continuer à concentrer la richesse, tout en faisant croire que le problème vient des étrangers, des pauvres, des minorités ou des militants.</p>
+<p>En clair :</p>
+<p><strong>ils s’enrichissent déjà aux dépens du pays, et ils financent le climat politique qui leur permettrait de continuer plus brutalement encore.</strong></p></section>
+      </div>
+
+      <section class="source-index" id="bibliographie-complete">
+        <h2>Bibliographie complète</h2>
+        <p>Toutes les sources présentes dans le dossier sont reprises ici, sans suppression ni raccourci.</p>
+        <ol>
+          <li id="src-1"><span class="src-index">[1]</span> <a href="https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/le-systeme-bollore/le-systeme-bollore</a><span class="src-host">multinationales.org</span></li><li id="src-2"><span class="src-index">[2]</span> <a href="https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore" target="_blank" rel="noopener noreferrer">https://france.attac.org/nos-publications/notes-et-rapports/article/rapport-le-systeme-bollore</a><span class="src-host">france.attac.org</span></li><li id="src-3"><span class="src-index">[3]</span> <a href="https://www.mediapart.fr/journal/economie/170222/l-afrique-coeur-du-reacteur-du-groupe-bollore" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/economie/170222/l-afrique-coeur-du-reacteur-du-groupe-bollore</a><span class="src-host">mediapart.fr</span></li><li id="src-4"><span class="src-index">[4]</span> <a href="https://www.lemonde.fr/en/france/article/2025/03/19/ngos-file-suit-accusing-billionaire-vincent-bollore-of-being-at-heart-of-african-system-of-corruption_6739309_7.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/en/france/article/2025/03/19/ngos-file-suit-accusing-billionaire-vincent-bollore-of-being-at-heart-of-african-system-of-corruption_6739309_7.html</a><span class="src-host">lemonde.fr</span></li><li id="src-5"><span class="src-index">[5]</span> <a href="https://www.reuters.com/business/anti-graft-groups-target-bollore-group-over-old-africa-assets-demand-restitution-2025-03-19/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/business/anti-graft-groups-target-bollore-group-over-old-africa-assets-demand-restitution-2025-03-19/</a><span class="src-host">reuters.com</span></li><li id="src-6"><span class="src-index">[6]</span> <a href="https://afrique.latribune.fr/economie/2025-03-19/les-enjeux-economiques-derriere-la-plainte-de-restitution-afrique-contre-bollore-1021007.html" target="_blank" rel="noopener noreferrer">https://afrique.latribune.fr/economie/2025-03-19/les-enjeux-economiques-derriere-la-plainte-de-restitution-afrique-contre-bollore-1021007.html</a><span class="src-host">afrique.latribune.fr</span></li><li id="src-7"><span class="src-index">[7]</span> <a href="https://www.leprogres.fr/faits-divers-justice/2021/02/26/corruption-au-togo-la-justice-estime-necessaire-un-proces-de-bollore" target="_blank" rel="noopener noreferrer">https://www.leprogres.fr/faits-divers-justice/2021/02/26/corruption-au-togo-la-justice-estime-necessaire-un-proces-de-bollore</a><span class="src-host">leprogres.fr</span></li><li id="src-8"><span class="src-index">[8]</span> <a href="https://outlook.skan1.fr/2021/05/17/cjip-affaire-bollore-corruption-port-lome-togo-afa-amende-compliance/" target="_blank" rel="noopener noreferrer">https://outlook.skan1.fr/2021/05/17/cjip-affaire-bollore-corruption-port-lome-togo-afa-amende-compliance/</a><span class="src-host">outlook.skan1.fr</span></li><li id="src-9"><span class="src-index">[9]</span> <a href="https://www.lagazettefrance.fr/article/le-parquet-financier-demande-un-proces-pour-vincent-bollore-pour-corruption-au-togo" target="_blank" rel="noopener noreferrer">https://www.lagazettefrance.fr/article/le-parquet-financier-demande-un-proces-pour-vincent-bollore-pour-corruption-au-togo</a><span class="src-host">lagazettefrance.fr</span></li><li id="src-10"><span class="src-index">[10]</span> <a href="https://www.connaissancedesenergies.org/afp/letat-rachete-bollore-pour-31-millions-deuros-la-societe-qui-opere-loleoduc-donges-melun-metz-220119" target="_blank" rel="noopener noreferrer">https://www.connaissancedesenergies.org/afp/letat-rachete-bollore-pour-31-millions-deuros-la-societe-qui-opere-loleoduc-donges-melun-metz-220119</a><span class="src-host">connaissancedesenergies.org</span></li><li id="src-11"><span class="src-index">[11]</span> <a href="https://www.mediapart.fr/journal/economie-et-social/270122/l-etat-fait-un-cadeau-insense-bollore" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/economie-et-social/270122/l-etat-fait-un-cadeau-insense-bollore</a><span class="src-host">mediapart.fr</span></li><li id="src-12"><span class="src-index">[12]</span> <a href="https://www.boursorama.com/bourse/actualites/redressement-fiscal-de-vivendi-eric-coquerel-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore-1381c695055c14bbb5215ff9b768cc61" target="_blank" rel="noopener noreferrer">https://www.boursorama.com/bourse/actualites/redressement-fiscal-de-vivendi-eric-coquerel-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore-1381c695055c14bbb5215ff9b768cc61</a><span class="src-host">boursorama.com</span></li><li id="src-13"><span class="src-index">[13]</span> <a href="https://medias24.com/agence-presse/eric-coquerel-lfi-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore/" target="_blank" rel="noopener noreferrer">https://medias24.com/agence-presse/eric-coquerel-lfi-ira-a-bercy-pour-consulter-le-dossier-fiscal-de-bollore/</a><span class="src-host">medias24.com</span></li><li id="src-14"><span class="src-index">[14]</span> <a href="https://www.nbim.no/en/news-and-insights/the-press/press-releases/2025/decision-on-exclusion/" target="_blank" rel="noopener noreferrer">https://www.nbim.no/en/news-and-insights/the-press/press-releases/2025/decision-on-exclusion/</a><span class="src-host">nbim.no</span></li><li id="src-15"><span class="src-index">[15]</span> <a href="https://www.norges-bank.no/en/news-events/publications/Annual-Report/2025-annual-report/web-report-2025-annual-report/" target="_blank" rel="noopener noreferrer">https://www.norges-bank.no/en/news-events/publications/Annual-Report/2025-annual-report/web-report-2025-annual-report/</a><span class="src-host">norges-bank.no</span></li><li id="src-16"><span class="src-index">[16]</span> <a href="https://www.oaklandinstitute.org/public-statement/norwegian-pension-fund-dumps-bollore-human-rights-violations-plantations" target="_blank" rel="noopener noreferrer">https://www.oaklandinstitute.org/public-statement/norwegian-pension-fund-dumps-bollore-human-rights-violations-plantations</a><span class="src-host">oaklandinstitute.org</span></li><li id="src-17"><span class="src-index">[17]</span> <a href="https://www.novethic.fr/economie-et-social/droits-humains/le-fonds-souverain-norvegien-exclut-le-groupe-bollore-pour-violations-de-droits-humains" target="_blank" rel="noopener noreferrer">https://www.novethic.fr/economie-et-social/droits-humains/le-fonds-souverain-norvegien-exclut-le-groupe-bollore-pour-violations-de-droits-humains</a><span class="src-host">novethic.fr</span></li><li id="src-18"><span class="src-index">[18]</span> <a href="https://vert.eco/articles/quelles-entreprises-possede-vincent-bollore-le-milliardaire-au-service-de-lextreme-droite" target="_blank" rel="noopener noreferrer">https://vert.eco/articles/quelles-entreprises-possede-vincent-bollore-le-milliardaire-au-service-de-lextreme-droite</a><span class="src-host">vert.eco</span></li><li id="src-19"><span class="src-index">[19]</span> <a href="https://www.mediapart.fr/journal/culture-et-idees/090426/debrancher-cnews-lutter-contre-le-racisme" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/culture-et-idees/090426/debrancher-cnews-lutter-contre-le-racisme</a><span class="src-host">mediapart.fr</span></li><li id="src-20"><span class="src-index">[20]</span> <a href="https://www.lemonde.fr/politique/article/2024/06/13/comment-eric-ciotti-a-orchestre-avec-vincent-bollore-l-annonce-de-son-ralliement-au-rn_6239404_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2024/06/13/comment-eric-ciotti-a-orchestre-avec-vincent-bollore-l-annonce-de-son-ralliement-au-rn_6239404_823448.html</a><span class="src-host">lemonde.fr</span></li><li id="src-21"><span class="src-index">[21]</span> <a href="https://www.lemonde.fr/en/economy/article/2024/06/21/french-business-leaders-are-tempted-by-the-far-right_6675357_19.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/en/economy/article/2024/06/21/french-business-leaders-are-tempted-by-the-far-right_6675357_19.html</a><span class="src-host">lemonde.fr</span></li><li id="src-22"><span class="src-index">[22]</span> <a href="https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2024/07/21/le-plan-du-milliardaire-pierre-edouard-sterin-pour-permettre-la-victoire-de-la-droite-et-de-l-extreme-droite_6254183_823448.html</a><span class="src-host">lemonde.fr</span></li><li id="src-23"><span class="src-index">[23]</span> <a href="https://www.lemonde.fr/politique/article/2025/02/18/pierre-edouard-sterin-et-francois-durvye-les-hommes-d-affaires-qui-aimantent-la-droite-et-le-rn_6551770_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2025/02/18/pierre-edouard-sterin-et-francois-durvye-les-hommes-d-affaires-qui-aimantent-la-droite-et-le-rn_6551770_823448.html</a><span class="src-host">lemonde.fr</span></li><li id="src-24"><span class="src-index">[24]</span> <a href="https://www.mediapart.fr/journal/france/140525/le-milliardaire-pierre-edouard-sterin-esquive-la-commission-d-enquete-sur-les-elections" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/france/140525/le-milliardaire-pierre-edouard-sterin-esquive-la-commission-d-enquete-sur-les-elections</a><span class="src-host">mediapart.fr</span></li><li id="src-25"><span class="src-index">[25]</span> <a href="https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les" target="_blank" rel="noopener noreferrer">https://lcp.fr/actualites/l-absence-injustifiee-de-pierre-edouard-sterin-devant-la-commission-d-enquete-sur-les</a><span class="src-host">lcp.fr</span></li><li id="src-26"><span class="src-index">[26]</span> <a href="https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/faf40-enquetes-sur-l-extreme-droite-les-grandes-fortunes-et-les-milieux-d/le-systeme-sterin</a><span class="src-host">multinationales.org</span></li><li id="src-27"><span class="src-index">[27]</span> <a href="https://www.radiofrance.fr/franceinter/podcasts/secrets-d-info/secrets-d-info-du-samedi-22-fevrier-2025-3617308" target="_blank" rel="noopener noreferrer">https://www.radiofrance.fr/franceinter/podcasts/secrets-d-info/secrets-d-info-du-samedi-22-fevrier-2025-3617308</a><span class="src-host">radiofrance.fr</span></li><li id="src-28"><span class="src-index">[28]</span> <a href="https://www.mediapart.fr/journal/france/190724/le-plan-pericles-des-millions-pour-l-extreme-droite-et-une-victoire-du-rn" target="_blank" rel="noopener noreferrer">https://www.mediapart.fr/journal/france/190724/le-plan-pericles-des-millions-pour-l-extreme-droite-et-une-victoire-du-rn</a><span class="src-host">mediapart.fr</span></li><li id="src-29"><span class="src-index">[29]</span> <a href="https://www.streetpress.com/sujet/1741086667-milliardaire-extreme-droite-sterin-inonde-web-influenceurs-cathos-sponsor-finance-fonds-chretiens-conservateurs-tiktok-instagram" target="_blank" rel="noopener noreferrer">https://www.streetpress.com/sujet/1741086667-milliardaire-extreme-droite-sterin-inonde-web-influenceurs-cathos-sponsor-finance-fonds-chretiens-conservateurs-tiktok-instagram</a><span class="src-host">streetpress.com</span></li><li id="src-30"><span class="src-index">[30]</span> <a href="https://www.huffingtonpost.fr/politique/article/pierre-edouard-sterin-tout-ce-que-vous-devez-savoir-sur-ce-milliardaire-qui-sponsorise-l-extreme-droite_252493.html" target="_blank" rel="noopener noreferrer">https://www.huffingtonpost.fr/politique/article/pierre-edouard-sterin-tout-ce-que-vous-devez-savoir-sur-ce-milliardaire-qui-sponsorise-l-extreme-droite_252493.html</a><span class="src-host">huffingtonpost.fr</span></li><li id="src-31"><span class="src-index">[31]</span> <a href="https://multinationales.org/fr/enquetes/extreme-tech/derriere-la-nuit-du-bien-commun-l-ombre-embarrassante-de-sterin-et-toute-une" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/extreme-tech/derriere-la-nuit-du-bien-commun-l-ombre-embarrassante-de-sterin-et-toute-une</a><span class="src-host">multinationales.org</span></li><li id="src-32"><span class="src-index">[32]</span> <a href="https://multinationales.org/fr/enquetes/extreme-tech/pierre-edouard-sterin-finance-son-fonds-du-bien-commun-par-des-prets" target="_blank" rel="noopener noreferrer">https://multinationales.org/fr/enquetes/extreme-tech/pierre-edouard-sterin-finance-son-fonds-du-bien-commun-par-des-prets</a><span class="src-host">multinationales.org</span></li><li id="src-33"><span class="src-index">[33]</span> <a href="https://www.lemonde.fr/les-decodeurs/article/2025/07/10/le-milliardaire-pierre-edouard-sterin-au-c-ur-d-une-enquete-sur-le-financement-illegal-de-candidats-du-rn_6620450_4355770.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/les-decodeurs/article/2025/07/10/le-milliardaire-pierre-edouard-sterin-au-c-ur-d-une-enquete-sur-le-financement-illegal-de-candidats-du-rn_6620450_4355770.html</a><span class="src-host">lemonde.fr</span></li><li id="src-34"><span class="src-index">[34]</span> <a href="https://www.lemonde.fr/politique/article/2025/07/10/les-multiples-tentatives-de-pierre-edouard-sterin-pour-participer-a-la-victoire-electorale-de-son-camp_6620471_823448.html" target="_blank" rel="noopener noreferrer">https://www.lemonde.fr/politique/article/2025/07/10/les-multiples-tentatives-de-pierre-edouard-sterin-pour-participer-a-la-victoire-electorale-de-son-camp_6620471_823448.html</a><span class="src-host">lemonde.fr</span></li><li id="src-35"><span class="src-index">[35]</span> <a href="https://lcp.fr/actualites/l-homme-d-affaires-pierre-edouard-sterin-seche-encore-la-convocation-d-une-commission-d" target="_blank" rel="noopener noreferrer">https://lcp.fr/actualites/l-homme-d-affaires-pierre-edouard-sterin-seche-encore-la-convocation-d-une-commission-d</a><span class="src-host">lcp.fr</span></li><li id="src-36"><span class="src-index">[36]</span> <a href="https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/audition-de-pierre-edouard-sterin-par-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france" target="_blank" rel="noopener noreferrer">https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/audition-de-pierre-edouard-sterin-par-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france</a><span class="src-host">assemblee-nationale.fr</span></li><li id="src-37"><span class="src-index">[37]</span> <a href="https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/poursuite-des-travaux-de-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france" target="_blank" rel="noopener noreferrer">https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/poursuite-des-travaux-de-la-commission-d-enquete-concernant-l-organisation-des-elections-en-france</a><span class="src-host">assemblee-nationale.fr</span></li><li id="src-38"><span class="src-index">[38]</span> <a href="https://www.strategie.gouv.fr/files/files/Publications/Rapport/fs-2023-rapport-isf-quatrieme_rapport_complet_17octobre_2.pdf" target="_blank" rel="noopener noreferrer">https://www.strategie.gouv.fr/files/files/Publications/Rapport/fs-2023-rapport-isf-quatrieme_rapport_complet_17octobre_2.pdf</a><span class="src-host">strategie.gouv.fr</span></li><li id="src-39"><span class="src-index">[39]</span> <a href="https://www.strategie.gouv.fr/files/files/Presse/CP%202023/2023-10-17_Le%20Comit%C3%A9%20d%27%C3%A9valuation%20des%20r%C3%A9formes%20de%20la%20fiscalit%C3%A9%20du%20capital%20publie%20son%20rapport%20final.pdf" target="_blank" rel="noopener noreferrer">https://www.strategie.gouv.fr/files/files/Presse/CP%202023/2023-10-17_Le%20Comit%C3%A9%20d%27%C3%A9valuation%20des%20r%C3%A9formes%20de%20la%20fiscalit%C3%A9%20du%20capital%20publie%20son%20rapport%20final.pdf</a><span class="src-host">strategie.gouv.fr</span></li>
+        </ol>
+        <p class="footer-note">Principe de lecture : quand le dossier parle d’enquête, de soupçons, de controverse ou de présomption d’innocence, il le dit explicitement. Quand il parle de montants, ils proviennent des sources citées dans les sections correspondantes.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const jump = document.getElementById('jump');
+    if (jump) {
+      jump.addEventListener('change', function () {
+        if (this.value) {
+          const el = document.getElementById(this.value);
+          if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      });
+    }
+  </script>
+</body>
+</html>
